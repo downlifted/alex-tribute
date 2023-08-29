@@ -2,12 +2,32 @@
 <html>
 <head>
     <title>Tribute to Alex</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <h1>In Loving Memory of Alex</h1>
         <p>A tribute to a passionate NFT enthusiast</p>
     </header>
-    <!-- Rest of the content -->
+    <section id="nft-gallery">
+        <h2>Alex's Favorite NFTs</h2>
+        <div class="nft-container">
+            <!-- NFT items will be added here -->
+        </div>
+    </section>
+    <section id="memories">
+        <h2>Share Your Memories</h2>
+        <form id="memory-form">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="memory">Your Memory:</label>
+            <textarea id="memory" name="memory" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+        <div class="memory-container">
+            <!-- Memories will be added here -->
+        </div>
+    </section>
+    <script src="script.js"></script>
 </body>
 </html>
