@@ -1,4 +1,6 @@
+// script.js
 const memoryForm = document.getElementById('memory-form');
+const memoryContainer = document.querySelector('.memory-container');
 
 memoryForm.addEventListener('submit', async event => {
     event.preventDefault();
@@ -18,9 +20,27 @@ memoryForm.addEventListener('submit', async event => {
     });
 
     if (response.ok) {
-        // Refresh the page to show the updated memories
-        window.location.reload();
+        // Refresh the memory container to show the updated memories
+        memoryContainer.innerHTML = ''; // Clear existing memories
+        fetchMemories(); // Fetch and display memories again
     } else {
         console.error('Failed to submit memory');
     }
 });
+
+async function fetchMemories() {
+    const response = await fetch('/api/memories.json'); // Assuming you have an API route to serve the JSON file
+    const memories = await response.json();
+    memories.forEach(memory => {
+        const memoryItem = document.createElement('div');
+        memoryItem.classList.add('memory-item');
+        memoryItem.innerHTML = `
+            <p><strong>${memory.name}</strong> said:</p>
+            <p>${memory.memory}</p>
+        `;
+        memoryContainer.appendChild(memoryItem);
+    });
+}
+
+// Initial fetch to populate the memories
+fetchMemories();
