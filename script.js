@@ -9,7 +9,7 @@ memoryForm.addEventListener('submit', async event => {
         return;
     }
 
-    const response = await fetch('/api/submitMemory.js', {
+    const response = await fetch('/api/submitMemory', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
